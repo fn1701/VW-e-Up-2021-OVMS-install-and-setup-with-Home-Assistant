@@ -1,0 +1,266 @@
+T26A/OBD2 -> use T26A if present, else use OBD2
+
+m (module/system metrics)
+│
+├─ m/egpio
+│   ├─ m/egpio/input
+│   └─ m/egpio/output
+├─ m/freeram
+├─ m/hardware
+├─ m/monotonic
+├─ m/net
+│   ├─ m/net/connected
+│   ├─ m/net/good
+│   │   └─ m/net/good/sq
+│   ├─ m/net/ip
+│   ├─ m/net/mdm
+│   │   ├─ m/net/mdm/iccid
+│   │   ├─ m/net/mdm/mode
+│   │   ├─ m/net/mdm/model
+│   │   ├─ m/net/mdm/netreg
+│   │   ├─ m/net/mdm/network
+│   │   └─ m/net/mdm/sq
+│   ├─ m/net/provider
+│   ├─ m/net/sq
+│   ├─ m/net/type
+│   └─ m/net/wifi
+│       ├─ m/net/wifi/network
+│       └─ m/net/wifi/sq
+├─ m/tasks
+├─ m/time
+│   └─ m/time/utc
+└─ m/version
+
+s (server/system namespace (OVMS server events))
+└─ s/v3 (version of the OVMS protocol / API (v3))
+    ├─ s/v3/connected (connection status of the vehicle to the OVMS server)
+    └─ s/v3/peers (list of currently connected peers (vehicles, modules, or clients))
+
+v (vehicle metrics)
+│
+├─ v/b (Battery subsystem)
+│   ├─ v/b/12v (12‑volt auxiliary battery) [T26A]
+│   ├─ v/b/12v/current [T26A]
+│   ├─ v/b/12v/voltage [T26A]
+│   │   ├─ v/b/12v/voltage/alert [T26A]
+│   │   └─ v/b/12v/voltage/ref [T26A]
+│   ├─ v/b/c (Battery cells (per-cell metrics)) [OBD2]
+│   │   ├─ v/b/c/temp [OBD2]
+│   │   │   ├─ v/b/c/temp/alert [OBD2]
+│   │   │   ├─ v/b/c/temp/dev [OBD2]
+│   │   │   │   └─ v/b/c/temp/dev/max [OBD2]
+│   │   │   ├─ v/b/c/temp/max [OBD2]
+│   │   │   └─ v/b/c/temp/min [OBD2]
+│   │   └─ v/b/c/voltage [OBD2]
+│   │       ├─ v/b/c/voltage/alert [OBD2]
+│   │       ├─ v/b/c/voltage/dev [OBD2]
+│   │       │   └─ v/b/c/voltage/dev/max [OBD2]
+│   │       ├─ v/b/c/voltage/max [OBD2]
+│   │       └─ v/b/c/voltage/min [OBD2]
+│   ├─ v/b/cac [OBD2]
+│   ├─ v/b/capacity [OBD2]
+│   ├─ v/b/consumption [OBD2]
+│   ├─ v/b/coulomb [OBD2]
+│   │   ├─ v/b/coulomb/recd [OBD2]
+│   │   │   └─ v/b/coulomb/recd/total [OBD2]
+│   │   └─ v/b/coulomb/used [OBD2]
+│   │       └─ v/b/coulomb/used/total [OBD2]
+│   ├─ v/b/current [T26A]
+│   ├─ v/b/energy [OBD2]
+│   │   ├─ v/b/energy/recd [OBD2]
+│   │   │   └─ v/b/energy/recd/total [OBD2]
+│   │   └─ v/b/energy/used [OBD2]
+│   │       └─ v/b/energy/used/total [OBD2]
+│   ├─ v/b/p (Pack-level (whole battery pack, not individual cells)) [OBD2]
+│   │   ├─ v/b/p/temp [OBD2]
+│   │   │   ├─ v/b/p/temp/avg [OBD2]
+│   │   │   ├─ v/b/p/temp/max [OBD2]
+│   │   │   ├─ v/b/p/temp/min [OBD2]
+│   │   │   └─ v/b/p/temp/stddev [OBD2]
+│   │   │       └─ v/b/p/temp/stddev/max [OBD2]
+│   │   └─ v/b/p/voltage [OBD2]
+│   │       ├─ v/b/p/voltage/avg [OBD2]
+│   │       ├─ v/b/p/voltage/grad [OBD2]
+│   │       ├─ v/b/p/voltage/max [OBD2]
+│   │       ├─ v/b/p/voltage/min [OBD2]
+│   │       └─ v/b/p/voltage/stddev [OBD2]
+│   │           └─ v/b/p/voltage/stddev/max [OBD2]
+│   ├─ v/b/power [T26A]
+│   ├─ v/b/range
+│   │   ├─ v/b/range/est [T26A]
+│   │   ├─ v/b/range/full [OBD2]
+│   │   ├─ v/b/range/ideal [T26A]
+│   │   └─ v/b/range/speed [OBD2]
+│   ├─ v/b/soc [T26A/OBD2]
+│   ├─ v/b/soh [OBD2]
+│   ├─ v/b/temp [OBD2]
+│   └─ v/b/voltage [T26A]
+├─ v/c (Consumption/charging metrics)
+│   ├─ v/c/12v [T26A]
+│   │   ├─ v/c/12v/current [T26A]
+│   │   ├─ v/c/12v/power [T26A]
+│   │   ├─ v/c/12v/temp [T26A]
+│   │   └─ v/c/12v/voltage [T26A]
+│   ├─ v/c/charging [T26A]
+│   ├─ v/c/climit [T26A/OBD2]
+│   ├─ v/c/current [T26A]
+│   ├─ v/c/duration [T26A/OBD2]
+│   │   ├─ v/c/duration/full [T26A/OBD2]
+│   │   ├─ v/c/duration/range [T26A/OBD2]
+│   │   └─ v/c/duration/soc [T26A/OBD2]
+│   ├─ v/c/efficiency [OBD2]
+│   ├─ v/c/kwh [OBD2]
+│   │   ├─ v/c/kwh/grid [OBD2]
+│   │   └─ v/c/kwh/grid/total [OBD2]
+│   ├─ v/c/limit [T26A/OBD2]
+│   │   └─ v/c/limit/soc [T26A/OBD2]
+│   │       ├─ v/c/limit/soc/max [T26A/OBD2]
+│   │       └─ v/c/limit/soc/min [T26A/OBD2]
+│   ├─ v/c/mode [T26A/OBD2]
+│   ├─ v/c/pilot [T26A]
+│   ├─ v/c/power [T26A]
+│   ├─ v/c/state [T26A/OBD2]
+│   ├─ v/c/substate [T26A/OBD2]
+│   ├─ v/c/temp [T26A]
+│   ├─ v/c/time [T26A]
+│   ├─ v/c/timermode [T26A/OBD2]
+│   └─ v/c/voltage [T26A]
+├─ v/d
+│   ├─ v/d/cp [T26A]
+│   ├─ v/d/fl [T26A]
+│   ├─ v/d/fr [T26A]
+│   ├─ v/d/hood [T26A]
+│   ├─ v/d/rl [T26A]
+│   ├─ v/d/rr [T26A]
+│   └─ v/d/trunk [T26A]
+├─ v/e (Energy / battery subsystem)
+│   ├─ v/e/aux12v [T26A]
+│   ├─ v/e/awake [T26A]
+│   ├─ v/e/cabintemp [T26A]
+│   ├─ v/e/charging12v [T26A]
+│   ├─ v/e/drivemode [T26A]
+│   ├─ v/e/drivetime [T26A]
+│   ├─ v/e/gear [OBD2]
+│   ├─ v/e/headlights [T26A]
+│   ├─ v/e/hvac [T26A]
+│   ├─ v/e/locked [T26A]
+│   ├─ v/e/on [T26A]
+│   ├─ v/e/parktime [T26A]
+│   ├─ v/e/serv [OBD2]
+│   ├─ v/e/serv/range [OBD2]
+│   ├─ v/e/serv/time [OBD2]
+│   └─ v/e/temp [T26A]
+├─ v/g
+│   └─ v/g/time [T26A]
+├─ v/i
+│   ├─ v/i/power [T26A]
+│   └─ v/i/temp [T26A]
+├─ v/m
+│   └─ v/m/temp [T26A]
+├─ v/p (position / trip metrics)
+│   ├─ v/p/acceleration [OBD2]
+│   ├─ v/p/altitude [OBD2]
+│   ├─ v/p/direction [OBD2]
+│   ├─ v/p/gpshdop [OBD2]
+│   ├─ v/p/gpslock [OBD2]
+│   ├─ v/p/gpsmode [OBD2]
+│   ├─ v/p/gpsspeed [OBD2]
+│   ├─ v/p/gpssq [OBD2]
+│   ├─ v/p/gpstime [OBD2]
+│   ├─ v/p/latitude [OBD2]
+│   ├─ v/p/longitude [OBD2]
+│   ├─ v/p/odometer [T26A]
+│   ├─ v/p/satcount [OBD2]
+│   ├─ v/p.speed [T26A]
+│   ├─ v/p/odometer [T26A]
+│   └─ v/p/trip [T26A]
+├─ v/t (Telematics / telemetry / transport subsystem)
+│   ├─ v/t/alert [OBD2]
+│   └─ v/t/health [OBD2]
+├─ v/type [T26A/OBD2]
+└─ v/vin [T26A/OBD2]
+
+xvu (extended VW e-Up metrics/vehicle-specific metrics namespace)
+├─ xvu/b (Battery subsystem)
+│   ├─ xvu/b/c Cells (per-cell or cell group metrics) [OBD2]
+│   │   ├─ xvu/b/c/soh [OBD2]
+│   ├─ xvu/b/cap [OBD2]
+│   │   ├─ xvu/b/cap/ah [OBD2]
+│   │   │   ├─ xvu/b/cap/ah/abs [OBD2]
+│   │   │   └─ xvu/b/cap/ah/norm [OBD2]
+│   │   └─ xvu/b/cap/kwh [OBD2]
+│   │       ├─ xvu/b/cap/kwh/abs [OBD2]
+│   │       ├─ xvu/b/cap/kwh/norm [OBD2]
+│   │       └─ xvu/b/cap/kwh/range [OBD2]
+│   ├─ xvu/b/cell [OBD2]
+│   │   └─ xvu/b/cell/delta [OBD2]
+│   ├─ xvu/b/energy [OBD2]
+│   │   └─ xvu/b/energy/range [OBD2]
+│   ├─ xvu/b/hist [OBD2]
+│   │   └─ xvu/b/hist/soh [OBD2]
+│   │       └─ xvu/b/hist/soh/mod [OBD2]
+│   │           └─ xvu/b/hist/soh/mod/01...14 [OBD2]
+│   ├─ xvu/b/soc [OBD2]
+│   │   └─ xvu/b/soc/abs [OBD2]
+│   ├─ xvu/b/soh [OBD2]
+│   │   ├─ xvu/b/soh/charge [OBD2]
+│   │   ├─ xvu/b/soh/range [OBD2]
+│   │   └─ xvu/b/soh/vw [OBD2]
+├─ xvu/c (Charging subsystem)
+│   ├─ xvu/c/ac [OBD2]
+│   │   ├─ xvu/c/ac/i1 [OBD2]
+│   │   ├─ xvu/c/ac/i2 [OBD2]
+│   │   ├─ xvu/c/ac/p [OBD2]
+│   │   ├─ xvu/c/ac/u1 [OBD2]
+│   │   └─ xvu/c/ac/u2 [OBD2]
+│   ├─ xvu/c/ccs [OBD2]
+│   │   ├─ xvu/c/ccs/i [OBD2]
+│   │   ├─ xvu/c/ccs/p [OBD2]
+│   │   └─ xvu/c/ccs/u [OBD2]
+│   ├─ xvu/c/dc [OBD2]
+│   │   ├─ xvu/c/dc/i1 [OBD2]
+│   │   ├─ xvu/c/dc/i2 [OBD2]
+│   │   ├─ xvu/c/dc/p [OBD2]
+│   │   ├─ xvu/c/dc/u1 [OBD2]
+│   │   └─ xvu/c/dc/u2 [OBD2]
+│   ├─ xvu/c/eff [OBD2]
+│   │   ├─ xvu/c/eff/calc [OBD2]
+│   │   ├─ xvu/c/eff/ecu [OBD2]
+│   ├─ xvu/c/limit [OBD2]
+│   │   └─ xvu/c/limit/soc [OBD2]
+│   │       ├─ xvu/c/limit/soc/max [OBD2]
+│   │       └─ xvu/c/limit/soc/min [OBD2]
+│   ├─ xvu/c/loss [OBD2]
+│   │   ├─ xvu/c/loss/calc [OBD2]
+│   │   └─ xvu/c/loss/ecu [OBD2]
+│   ├─ xvu/c/soc [OBD2]
+│   │   └─ xvu/c/soc/norm [OBD2]
+│   ├─ xvu/c/timermode [OBD2]
+│   │   └─ xvu/c/timermode/def [OBD2]
+├─ xvu/e (Energy / battery subsystem)
+│   ├─ xvu/e/hv [OBD2]
+│   │   └─ xvu/e/hv/chgmode [OBD2]
+│   ├─ xvu/e/lv [OBD2]
+│   │   ├─ xvu/e/lv/autochg [OBD2]
+│   │   └─ xvu/e/lv/pwrstate [OBD2]
+│   └─ xvu/e/serv [OBD2]
+│       └─ xvu/e/serv/days [OBD2]
+├─ xvu/m [OBD2]
+│   ├─ xvu/m/soc [OBD2]
+│   │   ├─ xvu/m/soc/abs [OBD2]
+│   │   └─ xvu/m/soc/norm [OBD2]
+│   └─ xvu/m/version [OBD2]
+└─ xvu/v [OBD2]
+    └─ xvu/v/t [OBD2]
+        ├─ xvu/v/t/diff [OBD2]
+        └─ xvu/v/t/emgcy [OBD2]
+
+notify
+└─ notify/alert
+    ├─ notify/alert/charge
+    │   └─ notify/alert/charge/stopped
+    └─ notify/info
+        └─ notify/info/charge
+            └─ notify/info/charge/started
+
+status

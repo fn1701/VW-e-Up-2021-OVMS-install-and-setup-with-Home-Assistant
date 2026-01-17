@@ -1,0 +1,262 @@
+m (module/system metrics)
+│
+├─ m/egpio
+│   ├─ m/egpio/input
+│   └─ m/egpio/output
+├─ m/freeram
+├─ m/hardware
+├─ m/monotonic
+├─ m/net
+│   ├─ m/net/connected
+│   ├─ m/net/good
+│   │   └─ m/net/good/sq
+│   ├─ m/net/ip
+│   ├─ m/net/mdm
+│   │   ├─ m/net/mdm/iccid
+│   │   ├─ m/net/mdm/mode
+│   │   ├─ m/net/mdm/model
+│   │   ├─ m/net/mdm/netreg
+│   │   ├─ m/net/mdm/network
+│   │   └─ m/net/mdm/sq
+│   ├─ m/net/provider
+│   ├─ m/net/sq
+│   ├─ m/net/type
+│   └─ m/net/wifi
+│       ├─ m/net/wifi/network
+│       └─ m/net/wifi/sq
+├─ m/tasks
+├─ m/time
+│   └─ m/time/utc
+└─ m/version
+
+s (server/system namespace (OVMS server events))
+└─ s/v3 (version of the OVMS protocol / API (v3))
+    ├─ s/v3/connected (connection status of the vehicle to the OVMS server)
+    └─ s/v3/peers (list of currently connected peers (vehicles, modules, or clients))
+
+v (vehicle metrics)
+│
+├─ v/b (Battery subsystem)
+│   ├─ v/b/12v (12‑volt auxiliary battery)
+│   ├─ v/b/12v/current
+│   ├─ v/b/12v/voltage
+│   │   ├─ v/b/12v/voltage/alert
+│   │   └─ v/b/12v/voltage/ref (Reference voltage)
+│   ├─ v/b/c (Battery cells (per-cell metrics))
+│   │   ├─ v/b/c/temp
+│   │   │   ├─ v/b/c/temp/alert
+│   │   │   ├─ v/b/c/temp/dev (Deviation (difference or spread between measurements))
+│   │   │   │   └─ v/b/c/temp/dev/max
+│   │   │   ├─ v/b/c/temp/max
+│   │   │   └─ v/b/c/temp/min
+│   │   └─ v/b/c/voltage
+│   │       ├─ v/b/c/voltage/alert
+│   │       ├─ v/b/c/voltage/dev
+│   │       │   └─ v/b/c/voltage/dev/max
+│   │       ├─ v/b/c/voltage/max
+│   │       └─ v/b/c/voltage/min
+│   ├─ v/b/cac
+│   ├─ v/b/capacity
+│   ├─ v/b/consumption
+│   ├─ v/b/coulomb
+│   │   ├─ v/b/coulomb/recd
+│   │   │   └─ v/b/coulomb/recd/total
+│   │   └─ v/b/coulomb/used
+│   │       └─ v/b/coulomb/used/total
+│   ├─ v/b/current
+│   ├─ v/b/energy
+│   │   ├─ v/b/energy/recd
+│   │   │   └─ v/b/energy/recd/total
+│   │   └─ v/b/energy/used
+│   │       └─ v/b/energy/used/total
+│   ├─ v/b/p (Pack-level (whole battery pack, not individual cells))
+│   │   ├─ v/b/p/temp
+│   │   │   ├─ v/b/p/temp/avg
+│   │   │   ├─ v/b/p/temp/max
+│   │   │   ├─ v/b/p/temp/min
+│   │   │   └─ v/b/p/temp/stddev
+│   │   │       └─ v/b/p/temp/stddev/max
+│   │   └─ v/b/p/voltage
+│   │       ├─ v/b/p/voltage/avg
+│   │       ├─ v/b/p/voltage/grad
+│   │       ├─ v/b/p/voltage/max
+│   │       ├─ v/b/p/voltage/min
+│   │       └─ v/b/p/voltage/stddev
+│   │           └─ v/b/p/voltage/stddev/max
+│   ├─ v/b/power
+│   ├─ v/b/range
+│   │   ├─ v/b/range/est
+│   │   ├─ v/b/range/full
+│   │   ├─ v/b/range/ideal
+│   │   └─ v/b/range/speed
+│   ├─ v/b/soc
+│   ├─ v/b/soh
+│   ├─ v/b/temp
+│   └─ v/b/voltage
+├─ v/c (Consumption/charging metrics)
+│   ├─ v/c/12v
+│   │   ├─ v/c/12v/current
+│   │   ├─ v/c/12v/power
+│   │   ├─ v/c/12v/temp
+│   │   └─ v/c/12v/voltage
+│   ├─ v/c/charging
+│   ├─ v/c/climit
+│   ├─ v/c/current
+│   ├─ v/c/duration
+│   │   ├─ v/c/duration/full
+│   │   ├─ v/c/duration/range
+│   │   └─ v/c/duration/soc
+│   ├─ v/c/efficiency
+│   ├─ v/c/kwh
+│   │   ├─ v/c/kwh/grid (Energy drawn from the AC grid (external charging source))
+│   │   └─ v/c/kwh/grid/total
+│   ├─ v/c/limit
+│   │   └─ v/c/limit/soc
+│   ├─ v/c/mode
+│   ├─ v/c/pilot
+│   ├─ v/c/power
+│   ├─ v/c/state
+│   ├─ v/c/substate
+│   ├─ v/c/temp
+│   ├─ v/c/time
+│   ├─ v/c/timermode
+│   └─ v/c/voltage
+├─ v/d
+│   ├─ v/d/cp
+│   ├─ v/d/fl
+│   ├─ v/d/fr
+│   ├─ v/d/hood
+│   ├─ v/d/rl
+│   ├─ v/d/rr
+│   └─ v/d/trunk
+├─ v/e (Energy / battery subsystem)
+│   ├─ v/e/aux12v
+│   ├─ v/e/awake
+│   ├─ v/e/cabintemp
+│   ├─ v/e/charging12v
+│   ├─ v/e/drivemode
+│   ├─ v/e/drivetime
+│   ├─ v/e/gear
+│   ├─ v/e/headlights
+│   ├─ v/e/hvac
+│   ├─ v/e/locked
+│   ├─ v/e/on
+│   ├─ v/e/parktime
+│   ├─ v/e/serv (next Service required)
+│   ├─ v/e/serv/range (distance until next Service required)
+│   ├─ v/e/serv/time (time of next Service required)
+│   └─ v/e/temp
+├─ v/g
+│   └─ v/g/time
+├─ v/i
+│   ├─ v/i/power
+│   └─ v/i/temp
+├─ v/m
+│   └─ v/m/temp
+├─ v/p (position / trip metrics)
+│   ├─ v/p/acceleration
+│   ├─ v/p/altitude
+│   ├─ v/p/direction
+│   ├─ v/p/gpshdop
+│   ├─ v/p/gpslock
+│   ├─ v/p/gpsmode
+│   ├─ v/p/gpsspeed
+│   ├─ v/p/gpssq
+│   ├─ v/p/gpstime
+│   ├─ v/p/latitude
+│   ├─ v/p/longitude
+│   ├─ v/p/odometer
+│   ├─ v/p/satcount
+│   ├─ v/p.speed
+│   ├─ v/p/odometer
+│   └─ v/p/trip
+├─ v/t (Telematics / telemetry / transport subsystem)
+│   ├─ v/t/alert
+│   └─ v/t/health
+├─ v/type
+└─ v/vin
+
+xvu (extended VW e-Up metrics/vehicle-specific metrics namespace)
+├─ xvu/b (Battery subsystem)
+│   ├─ xvu/b/c Cells (per-cell or cell group metrics)
+│   │   ├─ xvu/b/c/soh (State of Health)
+│   ├─ xvu/b/cap (Capacity)
+│   │   ├─ xvu/b/cap/ah (Ampere-hours)
+│   │   │   ├─ xvu/b/cap/ah/abs (Absolute value)
+│   │   │   └─ xvu/b/cap/ah/norm (Normalized value)
+│   │   └─ xvu/b/cap/kwh
+│   │       ├─ xvu/b/cap/kwh/abs
+│   │       ├─ xvu/b/cap/kwh/norm
+│   │       └─ xvu/b/cap/kwh/range
+│   ├─ xvu/b/cell
+│   │   └─ xvu/b/cell/delta
+│   ├─ xvu/b/energy
+│   │   └─ xvu/b/energy/range
+│   ├─ xvu/b/hist (Historical data (logged or stored by BMS / OVMS))
+│   │   └─ xvu/b/hist/soh (State of Health (battery degradation metric))
+│   │       └─ xvu/b/hist/soh/mod (Module (battery is made of modules, each with multiple cells))
+│   │           └─ xvu/b/hist/soh/mod/01...14
+│   ├─ xvu/b/soc
+│   │   └─ xvu/b/soc/abs
+│   ├─ xvu/b/soh (State of Health (capacity degradation measure))
+│   │   ├─ xvu/b/soh/charge (Derived from charging data)
+│   │   ├─ xvu/b/soh/range (Range-based calculation)
+│   │   └─ xvu/b/soh/vw (VW-specific calculation / value provided by the car’s BMS)
+├─ xvu/c (Charging subsystem)
+│   ├─ xvu/c/ac (Alternating Current)
+│   │   ├─ xvu/c/ac/i1
+│   │   ├─ xvu/c/ac/i2
+│   │   ├─ xvu/c/ac/p
+│   │   ├─ xvu/c/ac/u1
+│   │   └─ xvu/c/ac/u2
+│   ├─ xvu/c/ccs (Combined Charging System (DC fast charging, via CCS plug))
+│   │   ├─ xvu/c/ccs/i
+│   │   ├─ xvu/c/ccs/p
+│   │   └─ xvu/c/ccs/u
+│   ├─ xvu/c/dc (Direct Current)
+│   │   ├─ xvu/c/dc/i1
+│   │   ├─ xvu/c/dc/i2
+│   │   ├─ xvu/c/dc/p
+│   │   ├─ xvu/c/dc/u1
+│   │   └─ xvu/c/dc/u2
+│   ├─ xvu/c/eff (Efficiency)
+│   │   ├─ xvu/c/eff/calc
+│   │   ├─ xvu/c/eff/ecu
+│   ├─ xvu/c/limit (Charging limits)
+│   │   └─ xvu/c/limit/soc (State of Charge)
+│   │       ├─ xvu/c/limit/soc/max
+│   │       └─ xvu/c/limit/soc/min
+│   ├─ xvu/c/loss
+│   │   ├─ xvu/c/loss/calc
+│   │   └─ xvu/c/loss/ecu
+│   ├─ xvu/c/soc
+│   │   └─ xvu/c/soc/norm
+│   ├─ xvu/c/timermode
+│   │   └─ xvu/c/timermode/def
+├─ xvu/e (Energy / battery subsystem)
+│   ├─ xvu/e/hv (High-voltage battery (traction battery))
+│   │   └─ xvu/e/hv/chgmode (Charging mode)
+│   ├─ xvu/e/lv (Low-voltage battery (12 V auxiliary battery))
+│   │   ├─ xvu/e/lv/autochg (Automatic charging enabled)
+│   │   └─ xvu/e/lv/pwrstate (Power state)
+│   └─ xvu/e/serv (Service / maintenance mode)
+│       └─ xvu/e/serv/days (Days remaining / estimation)
+├─ xvu/m (Module (battery module or pack module))
+│   ├─ xvu/m/soc (State of Charge)
+│   │   ├─ xvu/m/soc/abs
+│   │   └─ xvu/m/soc/norm
+│   └─ xvu/m/version
+└─ xvu/v (Vehicle domain)
+    └─ xvu/v/t (Tire)
+        ├─ xvu/v/t/diff (Tire Pressure Difference)
+        └─ xvu/v/t/emgcy (Tire Emergency Values)
+
+notify
+└─ notify/alert
+    ├─ notify/alert/charge
+    │   └─ notify/alert/charge/stopped
+    └─ notify/info
+        └─ notify/info/charge
+            └─ notify/info/charge/started
+
+status

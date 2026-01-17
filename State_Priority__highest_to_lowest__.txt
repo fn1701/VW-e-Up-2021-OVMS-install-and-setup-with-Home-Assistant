@@ -1,0 +1,7 @@
+State Priority (highest to lowest):
+1. Charging (updatetime.charging) - when v.c.charging = true
+2. On (updatetime.on) - when v.e.on = true
+3. Awake (updatetime.awake) - when v.e.awake = true
+4. Connected (updatetime.connected) - connection-based override
+5. Idle (updatetime.idle) - when all above are false/inactive
+The "connected" state is often used as a baseline when the vehicle has network connectivity but isn't in any of the more active states.
